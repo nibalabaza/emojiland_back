@@ -1,8 +1,18 @@
-const fs = require('fs').promises
-const raname = require('random-name')
-const mongoose = require('mongoose')
-const passport = require('passport')
-const expressSession = require('express-session');
+const fs             = require('fs').promises
+const raname         = require('random-name')
+const mongoose       = require('mongoose')
+const passport       = require('passport')
+const express        = require('express')
+const expressSession = require('express-session')
+const goMongoose     = require('../goMongoose')
+const bodyParser     = require('body-parser')
+
+// TENANT DOMAIN
+// dev-ax7dehtz.auth0.com
+
+
+const app = express()
+
 
 app.use(passport.initialize());
 app.use(passport.session());
