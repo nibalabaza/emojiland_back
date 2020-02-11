@@ -1,13 +1,7 @@
 const fs = require('fs').promises
 const d3 = require('d3-dsv')
-const mongoose = require('mongoose')
 
 path = './Lexique383.tsv'
-
-var dbPort = 27017
-
-var mongoURI = process.env.MONGODB_URI ||
-    `mongodb://127.0.0.1:${dbPort}/emojiland`
 
 const wordSchema = new mongoose.Schema({
   ortho: String,
@@ -49,26 +43,6 @@ const wordSchema = new mongoose.Schema({
   freqfilms: Number
 })
 
-const Word = new mongoose.model('Word', { word: wordSchema } )
-
-var mongoOpts = {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true
-}
-
-function dbConnectRet(err){
-  if (err !== null) {
-    console.log('Dabatase connection err', err);
-    process.exit(1); // fatal error
-  }
-  console.log(`DB  server listening on ${dbPort}`);
-}
-
-function go(){
-  console.log(`Database con attempt @${mongoURI}`)
-  mongoose.connect(mongoURI, mongoOpts, dbConnectRet);
-}
 
 const shortToLongColName = {
   ortho: 'mot',
