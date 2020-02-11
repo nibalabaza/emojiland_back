@@ -49,7 +49,7 @@ const wordSchema = new mongoose.Schema({
   freqfilms: Number
 })
 
-const Word = new mongoose.model('Word', wordSchema)
+const Word = new mongoose.model('Word', { word: wordSchema } )
 
 var mongoOpts = {
   useNewUrlParser: true,
@@ -148,19 +148,20 @@ async function getCategories(){
   console.log('removing superfluous property')
   delete content.columns
   console.log(`found ${content.length} documents`)
-  console.log('go mongoose go!')
-  await go()
-  fs.writeFile('./words.json', JSON.stringify(content))
+  console.log(`document is ${content[0].lemme}`)
+  await fs.writeFile('./words.json', JSON.stringify(content))
   process.exit(0)
-  /*
-  content.forEach( document => {
-    new Word(document).save()
-  })
-  */
 }
+
+
+/*
+mongoimport -d emojiland -c words --jsonArray words.json 
+*/
 
 
 getCategories()
 
+// users table
 
 // https://replika.ai/
+// https://diginoodles.com/projects/eowl
