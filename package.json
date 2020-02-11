@@ -20,6 +20,7 @@
     "d3-dsv": "^1.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.8.11",
+    "passport": "^0.4.1",
     "random-name": "^0.1.2"
   }
 }
