@@ -1,3 +1,4 @@
 .env
 node_modules/
-dbtooling/
+dbtooling/Lexique383.tsv
+dbtooling/words.json

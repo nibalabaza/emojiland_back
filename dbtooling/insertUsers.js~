@@ -1,0 +1,3 @@
+const raname = require('random-name')
+
+console.log(raname())
