@@ -99,7 +99,7 @@ const shortToLongColName = {
   orthrenv: 'forme orthograhique inversée',
   phonrenv: 'forme phonologique inversée',
   orthosyll: 'forme orthographique syllabée'
-}
+} 
 
 /*
 In place
