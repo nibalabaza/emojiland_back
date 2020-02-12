@@ -42,7 +42,6 @@ const wordSchema = new mongoose.Schema({
   'pld20'        : String,
   'morphoder'    : String,
   'nbmorph'      : Number,
-  'freqlemfilms' : Number,
   'freqfilms'    : Number
 })
 
