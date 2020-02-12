@@ -1,0 +1,72 @@
+[
+{
+_id: "5e42d9a3db21eb68bff28a7a",
+firstName: "Glennie",
+lastName: "Shanda",
+email: "glennie.shanda@example.com",
+avatar: "02.png"
+},
+{
+_id: "5e42d9a3db21eb68bff28a7b",
+firstName: "Christy",
+lastName: "Polivy",
+email: "christy.polivy@example.com",
+avatar: "00.png"
+},
+{
+_id: "5e42d9a3db21eb68bff28a7c",
+firstName: "Lane",
+lastName: "Mozza",
+email: "lane.mozza@example.com",
+avatar: "02.png"
+},
+{
+_id: "5e42d9a3db21eb68bff28a7d",
+firstName: "Opalina",
+lastName: "Benedicta",
+email: "opalina.benedicta@example.com",
+avatar: "00.png"
+},
+{
+_id: "5e42d9a3db21eb68bff28a7e",
+firstName: "Betteann",
+lastName: "Morganica",
+email: "betteann.morganica@example.com",
+avatar: "01.png"
+},
+{
+_id: "5e42d9a3db21eb68bff28a7f",
+firstName: "Clair",
+lastName: "Letha",
+email: "clair.letha@example.com",
+avatar: "01.png"
+},
+{
+_id: "5e42d9a3db21eb68bff28a80",
+firstName: "Thomasina",
+lastName: "Ermeena",
+email: "thomasina.ermeena@example.com",
+avatar: "01.png"
+},
+{
+_id: "5e42d9a3db21eb68bff28a81",
+firstName: "Yoshiko",
+lastName: "Diskson",
+email: "yoshiko.diskson@example.com",
+avatar: "01.png"
+},
+{
+_id: "5e42d9a3db21eb68bff28a82",
+firstName: "Myrtie",
+lastName: "Leonor",
+email: "myrtie.leonor@example.com",
+avatar: "01.png"
+},
+{
+_id: "5e42d9a3db21eb68bff28a83",
+firstName: "Halie",
+lastName: "Havard",
+email: "halie.havard@example.com",
+avatar: "02.png"
+}
+]

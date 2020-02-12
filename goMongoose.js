@@ -1,13 +1,13 @@
 //@ts-check
 
-var mongoose = require('mongoose')
-var utils = require('./utils')
+const mongoose = require('mongoose')
+const utils = require('./utils')
 
-var dbPort = 27017
+require('dotenv').config()
 
-var mongoURI = process.env.MONGODB_URI ||
-    `mongodb://localhost:${dbPort}/trippy_basics`
+const { DBPORT, MONGOHOST, DBNAME } = process.env
 
+var mongoURI = `mongodb://${MONGOHOST}:${DBPORT}/${DBNAME}`
 
 var mongoOpts = {
   useNewUrlParser: true,
@@ -21,10 +21,11 @@ function dbConnectRet(err){
     console.log('Dabatase connection err', err);
     process.exit(1); // fatal error
   }
-  utils.log(`DB  server listening on ${dbPort}`);
+  utils.log(`DB  server listening on ${DBPORT}`);
 }
 
 function go(){
+  utils.log(`DB  connection to ${mongoURI}`)
   mongoose.connect(mongoURI, mongoOpts, dbConnectRet);
 }
 
