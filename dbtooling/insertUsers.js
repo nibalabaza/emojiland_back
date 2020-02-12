@@ -2,11 +2,18 @@ const fs             = require('fs').promises
 const raname         = require('random-name')
 const mongoose       = require('mongoose')
 const passport       = require('passport')
+const passportLocal  = require('passport-local')
+const passportJwt    = require('passport-jwt')
+const jsonwebtoken   = require('jsonwebtoken')
 const express        = require('express')
 const cors           = require('cors')
 const goMongoose     = require('../goMongoose')
 const bodyParser     = require('body-parser')
 const log            = require('../utils').log
+/*
+const express<suffix>
+Check imports all required
+*/
 
 require('dotenv').config()
 
@@ -49,6 +56,7 @@ var userSchema = new mongoose.Schema({
 
 const app = express()
 
+
 goMongoose()
 app.use(cors({origin: `http://localhost:${HTTPPORT}`}))
 app.use(express.static('public'))
@@ -56,8 +64,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(passport.initialize())
 
-
-app.get('/', (req, res) => res.status(404).send('nope'))
 
 app.get('/api/', (req, res) => res.json(
   {
@@ -67,7 +73,8 @@ app.get('/api/', (req, res) => res.json(
 ))
 
 
-app.get('/api/words', (req, res) => {  
+app.get('/api/words', (req, res) => {
+  res.json({})
 })
 
 var User = new mongoose.model('User', userSchema)
@@ -135,3 +142,16 @@ async function createUserJSON(nb){
 //createUserJSON(100)
 
 // mongoimport -d emojiland -c users --jsonArray users.json 
+
+app.get('/', (req, res) => res.status(404).send('nope'))
+
+
+
+
+
+
+
+
+
+
+

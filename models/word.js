@@ -2,7 +2,9 @@
 
 const mongoose = require('mongoose')
 
+
 const attrTs = require('./attributeTypes')
+
 
 const wordSchema = new mongoose.Schema({
   'ortho'        : String,
@@ -44,6 +46,6 @@ const wordSchema = new mongoose.Schema({
   'freqfilms'    : Number
 })
 
-var Word = mongoose.model('Word', HotelSchema)
+var Word = mongoose.model('Word', wordSchema)
 
 module.exports = Word

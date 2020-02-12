@@ -7,6 +7,7 @@ const Word = require('../models/word')
 const buildReply = require('../utils').buildReply
 const log = require('../utils').log
 
+
 router.get('/', function(req, res){
   res.json({foo: "babar"})
 })
