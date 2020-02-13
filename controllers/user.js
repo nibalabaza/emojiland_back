@@ -60,10 +60,9 @@ router.get('/', function(req, res){
 
 router.get('/:id', function(req, res) {
     console.log('GET /users/:id');
-    console.log('GET /users/:id req.body', req.body);
+    console.log('GET /users/:id req.body', req.params.id);
 
-    userModel.findById(req.params.id, function(req, user) {
-        console.log('GET /users/:id err', err);
+    userModel.findById(req.params.id, function(err, user) {
         console.log('GET /users/:id user', user);
         if (err  !== null){
             res.json({

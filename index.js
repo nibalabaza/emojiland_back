@@ -6,6 +6,7 @@ var userModel = require('./models/user');
 var wordController = require("./controllers/word");
 var userController = require("./controllers/user");
 var gameController = require("./controllers/game");
+var loginController = require("./controllers/login")
 
 mongoose.connect(
     'mongodb://localhost:27017/emojiland',{
@@ -31,7 +32,7 @@ app.use(bodyParser.json());
 app.use('/api/words', wordController);
 app.use('/api/users', userController);
 app.use('/api/games', gameController);
-
+app.use('/api/login', loginController);
 
 
 app.all('*', function (req, res) {
