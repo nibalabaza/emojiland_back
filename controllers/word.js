@@ -9,7 +9,9 @@ const log = require('../utils').log
 
 
 router.get('/', function(req, res){
-  res.json({foo: "babar"})
+  log('GET /api/words')
+  Word.find({freqlemfilms: { $lte: 1000}}, 'ortho').limit(500)
+      .then( xs => res.json(pick(xs)) )
 })
 
 module.exports = router;
