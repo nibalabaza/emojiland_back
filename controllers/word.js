@@ -7,6 +7,10 @@ const Word = require('../models/word')
 const buildReply = require('../utils').buildReply
 const log = require('../utils').log
 
+function pick(xs){
+  const i = Math.floor(Math.random() * xs.length)
+  return xs[i]
+}
 
 router.get('/', function(req, res){
   log('GET /api/words')
