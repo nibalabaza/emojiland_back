@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var userModel = require('../models').user
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 
 
-router.post('api/users', function(req, res){
+router.post('/', function(req, res){
     console.log('POST /users');
     console.log('POST /users req.body', req.body);
 
-    var user = new UserModel({
+    var user = new userModel({
         firstName: req.body.firstName || '',
         lastName: req.body.lastName || '',
         email: req.body.email || '',
@@ -37,7 +37,7 @@ router.get('/', function(req, res){
     console.log('POST /users req.body', req.body);
 
 
-    UserModel
+    userModel
     .find({})
     .exec(function (err, users){
         console.log('GET /users err', err);
@@ -58,7 +58,7 @@ router.get('/', function(req, res){
     });
 });
 
-router.get('/api/users/:id', function(req, res) {
+router.get('/:id', function(req, res) {
     console.log('GET /users/:id');
     console.log('GET /users/:id req.body', req.body);
 
