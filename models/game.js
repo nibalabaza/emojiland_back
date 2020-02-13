@@ -1,4 +1,6 @@
 var mongoose = require ("mongoose");
+var types= mongoose.Schema.Types
+
 
 var game = new mongoose.Schema({
 
@@ -8,9 +10,9 @@ var game = new mongoose.Schema({
     level: {type: Number,
             index: true},
 
-    region: {type: mongoose.types.ObjectId, ref: 'region'},
+    region: {type: types.ObjectId, ref: 'region'},
 
-    word: {type: mongoose.types.ObjectId, ref: 'word'},
+    word: {type: types.ObjectId, ref: 'word'},
 
    
 

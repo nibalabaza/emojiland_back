@@ -1,13 +1,14 @@
 var mongoose = require ("mongoose");
+var types= mongoose.Schema.Types
 
 var help = new mongoose.Schema({
 
-    user: {type: mongoose.Types.ObjectId, ref: 'user'},
+    user: {type: types.ObjectId, ref: 'user'},
 
     datetime: {type:  Date,
                index: true},
  
-    region: {type: mongoose.Types.ObjectId, ref: 'region'},
+    region: {type: types.ObjectId, ref: 'region'},
 
 
 

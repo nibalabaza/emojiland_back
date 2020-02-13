@@ -11,3 +11,5 @@ const log = require('../utils').log
 router.get('/', function(req, res){
   res.json({foo: "babar"})
 })
+
+module.exports = router;

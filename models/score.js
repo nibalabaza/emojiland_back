@@ -1,14 +1,16 @@
 var mongoose = require ("mongoose");
+var types= mongoose.Schema.Types
+
 
 var score = new mongoose.Schema({
 
-    game: {type: mongoose.Types.ObjectId, ref: 'game'},
+    game: {type: types.ObjectId, ref: 'game'},
 
-    user: {type: mongoose.Types.Object, ref: 'user'},
+    user: {type: types.ObjectId, ref: 'user'},
  
     points: {type:  Number,
             index: true},
-dj
+
 
 
 })
