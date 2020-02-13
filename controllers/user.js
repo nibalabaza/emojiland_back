@@ -32,7 +32,7 @@ router.post('api/users', function(req, res){
 });
 
 
-router.get('api/users', function(req, res){
+router.get('/', function(req, res){
     console.log('GET / users');
     console.log('POST /users req.body', req.body);
 

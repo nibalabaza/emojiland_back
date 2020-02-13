@@ -3,7 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var userModel = require('./models/user');
 
-var wordsController = require("./controllers/words");
+var wordController = require("./controllers/word");
 var userController = require("./controllers/user");
 var gameController = require("./controllers/game");
 
@@ -28,9 +28,9 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-app.use('words', wordsController);
-app.use('/users', userController);
-app.use('/games', gameController);
+app.use('/words', wordController);
+app.use('/user',  userController);
+app.use('/game',  gameController);
 
 
 
@@ -41,6 +41,7 @@ app.all('*', function (req, res) {
         message: 'Route is not found'
     });
 });
+
 
 app.listen(port, function () {
     console.log('Server started on port:',port);
