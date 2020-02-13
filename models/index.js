@@ -5,6 +5,5 @@ module.exports = {
     region: require('./region'),
     score: require('./score'),
     user: require('./user'),
-    words: require('./words')
-
+    word: require('./word')
 };
