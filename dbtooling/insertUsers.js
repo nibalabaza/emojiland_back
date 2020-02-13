@@ -10,6 +10,7 @@ const cors           = require('cors')
 const goMongoose     = require('../goMongoose')
 const bodyParser     = require('body-parser')
 const log            = require('../utils').log
+const Word           = require('../models/word.js')
 /*
 const express<suffix>
 Check imports all required
@@ -73,13 +74,21 @@ app.get('/api/', (req, res) => res.json(
 ))
 
 
+function pick(xs){
+  const i = Math.floor(Math.random() * xs.length)
+  return xs[i]
+}
+
+
 app.get('/api/words', (req, res) => {
-  res.json({})
+  log('GET /api/words')
+  Word.find({freqlemfilms: { $lte: 100}}, 'ortho').limit(500)
+      .then( xs => res.json(pick(xs)) )
 })
 
 var User = new mongoose.model('User', userSchema)
 app.get('/users', async (req, res) => {
-  console.log('GET /users')
+  log('GET /users')
   User.find(null, null, {})
     .then( xs => res.json(xs) )
     .catch( err => res.json(err) )

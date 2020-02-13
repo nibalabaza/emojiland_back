@@ -3,45 +3,6 @@ const d3 = require('d3-dsv')
 
 path = './Lexique383.tsv'
 
-const wordSchema = new mongoose.Schema({
-  ortho: String,
-  phon:  String,
-  lemme: String,
-  cgram: String,
-  genre: String,
-  nombre: String,
-  freqlemfilms: Number,
-  freqlemlivres: Number,
-  freqfilms2: Number,
-  freqlivres: Number,
-  infover: String,
-  nbhomogr: Number,
-  nbhomoph: Number,
-  islem: Boolean,
-  nblettres: Number,
-  nbphons: Number,
-  cvcv: String,
-  p_cvcv: String,
-  voisorth: Number,
-  voisphon: Number,
-  puorth: Number,
-  puphon: Number,
-  syll: String,
-  nbsyll: Number,
-  'cv-cv': String,
-  orthrenv: String,
-  phonrenv: String,
-  orthosyll: String,
-  cgramortho: String,
-  deflem: String,
-  defobs: String,
-  old20: String,
-  pld20: String,
-  morphoder: String,
-  nbmorph: Number,
-  freqlemfilms: Number,
-  freqfilms: Number
-})
 
 
 const shortToLongColName = {
@@ -116,7 +77,7 @@ async function getCategories(){
   console.log('getting source file')
   const contentString = await fs.readFile(path, 'utf-8')
   console.log('parsing tsv content')
-  const content = d3.tsvParse(contentString)
+  const content = d3.tsvParse(contentString.substring(1))
   console.log('typing fields')
   content.forEach( typerow )
   console.log('removing superfluous property')
@@ -126,6 +87,7 @@ async function getCategories(){
   await fs.writeFile('./words.json', JSON.stringify(content))
   process.exit(0)
 }
+
 
 
 /*
