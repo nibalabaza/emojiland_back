@@ -28,9 +28,9 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-app.use('/words', wordsController);
-app.use('/user', userController);
-app.use('/game', gameController);
+app.use('words', wordsController);
+app.use('/users', userController);
+app.use('/games', gameController);
 
 
 
