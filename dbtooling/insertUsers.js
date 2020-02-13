@@ -82,7 +82,7 @@ function pick(xs){
 
 app.get('/api/words', (req, res) => {
   log('GET /api/words')
-  Word.find({freqlemfilms: { $lte: 100}}, 'ortho').limit(500)
+  Word.find({freqlemfilms: { $lte: 1000}}, 'ortho').limit(500)
       .then( xs => res.json(pick(xs)) )
 })
 
