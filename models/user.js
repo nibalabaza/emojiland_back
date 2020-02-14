@@ -2,6 +2,7 @@ var mongoose = require ("mongoose");
 var bcrypt   = require("bcrypt");
 
 var user = new mongoose.Schema({
+    password: String,
     firstName: {type: String,
                 index: true},
 
@@ -19,6 +20,7 @@ var user = new mongoose.Schema({
 })
 
 user.pre('save', async function(next){
+  console.log(this.password)
   const user = this
   const hash = await bcrypt.hash(this.password, 10)
   this.password = hash
