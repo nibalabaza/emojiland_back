@@ -1,31 +1,24 @@
-var express = require('express');
-var router = express.Router();
-var loginModel = require('../models').login
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
+const express  = require('express');
+const passport = require('passport');
+const jwt      = require('jsonwebtoken');
+const router   = express.Router();
 
-router.post('/', function(req,res){
-    console.log('GET /login');
-    console.log('GET /login', req.body);
-
-    var user = new userModel({
-        firstName: req.body.firstName || '',
-        lastName: req.body.lastName || '',
-        email: req.body.email || '',
-        avatar: req.body.avatar || '',
-        rights: req.body.rights || '',
-    });
-
-    loginModel.findOne({user:req.body}, function(err, user){
-        if (err) {
-          console.log('post error: ', err)
-          }
-        else if (user) {
-          console.log("already exsist")
-        }
-        
-    })
-})
-
+router.post('/', async (req, res, next) => {
+  passport.authenticate('login',
+			async (err, user, info) => {try {
+      if(err || !user){
+        const error = new Error('An Error occurred')
+        return next(error);
+      }
+      req.login(user, { session : false }, async (error) => {
+        if( error ) return next(error)
+        const body = { _id : user._id, email : user.email };
+        const token = jwt.sign({ user : body },'top_secret');
+        return res.json({ token });
+      });     } catch (error) {
+      return next(error);
+    }
+  })(req, res, next);
+});
 
 module.exports = router;
