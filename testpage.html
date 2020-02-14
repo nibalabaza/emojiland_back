@@ -1,0 +1,27 @@
+<DOCTYPE HTML>
+  <html>
+    <head>
+    </head>
+    <body>
+      <form id="form" method="post">
+	<input type="text"/>
+	<input type="password"/>
+	<input type="submit"/>
+      </form>
+      <script>
+	const form = document.getElementById('form')
+	form.onsubmit = prout
+	async function prout(e){
+	  e.preventDefault()
+	  const res = await fetch('http://192.168.1.174:3000/api/users/5e42d9a3db21eb68bff28a8d', {
+	    method: 'GET',
+	    headers: {
+	      'mode': '*cors',
+	      'content-type': 'application/json'
+	    }
+	  })
+	  console.log('fetch says:', await res.json())
+	}
+      </script>
+    </body>
+  </html>

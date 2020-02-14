@@ -1,41 +1,41 @@
-var mongoose = require ('mongoose');
-var express = require('express');
+var mongoose   = require ('mongoose');
+var express    = require('express');
 var bodyParser = require('body-parser');
-var userModel = require('./models/user');
+var cors       = require('cors');
 
-var wordController = require("./controllers/word");
-var userController = require("./controllers/user");
-var gameController = require("./controllers/game");
-var loginController = require("./controllers/login")
+var log = require('./utils').log
 
-mongoose.connect(
-    'mongodb://localhost:27017/emojiland',{
-        useNewParser: true,
-        useUnifiedTopology: true
-    },
-    function (err) {
-        if (err !== null) {
-            console.log('DB connected Failed');
-            return;
-        }
-        console.log('DB connected');
-    }
-);
 
-var port = 3000;
+var wordController   = require("./controllers/word");
+var userController   = require("./controllers/user");
+var gameController   = require("./controllers/game");
+var loginController  = require("./controllers/login");
+var signupController = require("./controllers/signup");
 
+
+require('./auth/auth')
+require('./goMongoose')()
+require('dotenv').config()
+
+
+var port = process.env.HTTPPORT;
 var app = express();
 
+
+app.use(cors({origin: '*'}))
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-app.use('/api/words', wordController);
-app.use('/api/users', userController);
-app.use('/api/games', gameController);
-app.use('/api/login', loginController);
+
+app.use('/api/words',    wordController);
+app.use('/api/users',    userController);
+app.use('/api/games',    gameController);
+app.use('/api/signup', signupController);
+app.use('/api/login',   loginController);
 
 
 app.all('*', function (req, res) {
+  console.log(req.originalUrl)
     res.json({
         success: false,
         title: 'Emojiland API',
@@ -44,6 +44,6 @@ app.all('*', function (req, res) {
 });
 
 
-app.listen(port, function () {
-    console.log('Server started on port:',port);
+app.listen(port, '0.0.0.0', () => {
+  log(`API server listening on ${port}`)
 });
