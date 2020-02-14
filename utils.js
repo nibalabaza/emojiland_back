@@ -6,7 +6,7 @@ function log(){
   args.splice(0, 0, now);
   console.log.apply(null, args);
 }
-
+/**to transform a function arguments object into un array */
 
 function buildReply(res, success, reply){
   res.json({
@@ -14,6 +14,7 @@ function buildReply(res, success, reply){
     data: reply
   })
 }
+/**create the json and sends it in json form */
 
 /**
  * Returns a bolean with a chanceTrue chance of being true

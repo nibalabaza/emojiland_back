@@ -23,38 +23,6 @@ const JwtStrategy = require('passport-jwt').Strategy
 const ExtractJwt = require('passport-jwt').ExtractJwt
 
 
-var opts = {}
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()
-opts.secretOrKey = 'superdupersecret'
-opts.issuer = 'users.emojiland.winnie'
-opts.audience = 'winnie.kaboum'
-passport.use(new JwtStrategy(opts, function(jwt_payload, done){
-  User.findOne({id: jwt_payload.sub}, function(err, user){
-    if(err){
-      return done(err, false);
-    }
-    if(user){
-      return done(null, user);
-    } else {
-      return done(null, false);
-      // or you could create a new account
-    }
-  })
-}))
-
-
-router.get('/prout',
-	passport.authenticate('jwt', { session: false }),
-	function(req, res){
-	  if(res !== null){
-	    console.log('res is not null')
-	    res.json('{success: false}')
-	  }else{
-	    res.json('{success: true}')
-	  }
-	}
-)
-
 
 router.get('/', function(req, res){
   log('GET /api/words')

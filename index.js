@@ -15,6 +15,7 @@ var signupController = require("./controllers/signup");
 
 require('./auth/auth')
 require('./goMongoose')()
+/**mongoose will call the function "go" to connect with the database and it will eccute it directly */
 require('dotenv').config()
 
 
@@ -23,6 +24,7 @@ var app = express();
 
 
 app.use(cors({origin: '*'}))
+/**to verify the source of the request of the API .To do "CROSS-ORIGIN RESOURCE sharing"  */
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
@@ -47,3 +49,5 @@ app.all('*', function (req, res) {
 app.listen(port, '0.0.0.0', () => {
   log(`API server listening on ${port}`)
 });
+
+/** All of the IP addresses match "0.0.0.0." */
