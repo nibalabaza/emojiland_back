@@ -7,9 +7,9 @@ require('dotenv').config()
 
 const { DBPORT, MONGOHOST, DBNAME } = process.env
 // /it is connected to the file .env for security
-
+console.log('process.env', process.env.MONGOHOST)
 var mongoURI = `mongodb://${MONGOHOST}:${DBPORT}/${DBNAME}`
-/*the number of the port and thze name of the project in .env*/ 
+/*the number of the port and the name of the project in .env*/ 
 
 var mongoOpts = {
   useNewUrlParser: true,
